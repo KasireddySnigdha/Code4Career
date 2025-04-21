@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code4Career - Learn Online</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: #f5f7fa;
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .navbar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        background: #ffffff;
+        padding: 1rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: #0056b3;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .navbar a:hover {
+        color: #003d80;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #0056b3;
+      }
+
+      .tagline {
+        color: #00796b;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      p.description {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        color: #555;
+      }
+
+      .email-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .email-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .email-box input {
+        padding: 1rem;
+        border-radius: 30px;
+        border: 1px solid #ddd;
+        width: 100%;
+        font-size: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        outline: none;
+        transition: border-color 0.3s ease;
+      }
+
+      .email-box input:focus {
+        border-color: #0056b3;
+      }
+
+      .email-box button {
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        border: none;
+        background-color: #0056b3;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .email-box button:hover {
+        background-color: #003d80;
+        transform: scale(1.05);
+      }
+
+      .why-us-section {
+        margin-top: 3rem;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .why-us-section h2 {
+        font-size: 2.4rem;
+        color: #0056b3;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .why-us-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        list-style: none;
+        padding: 0;
+        text-align: left;
+      }
+
+      .why-us-list li {
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .why-us-list li span {
+        font-size: 2rem;
+        color: #0056b3;
+      }
+
+      .why-us-list li div {
+        flex: 1;
+      }
+
+      .why-us-list li div h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+        color: #333;
+      }
+
+      .why-us-list li div p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .courses-section-header {
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .courses-heading {
+        display: inline-block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #333;
+      }
+
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .course-card {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .course-emoji {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      .course-details {
+        text-align: center;
+      }
+
+      .course-price {
+        color: #ff4d4d;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .course-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .course-duration {
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+
+      .course-rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+
+      .stars {
+        color: #ffb400;
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+      }
+
+      .review-count {
+        color: #666;
+      }
+
+      .categories-section {
+        margin: 4rem auto;
+        max-width: 1200px;
+      }
+
+      .categories-title {
+        color: #0056b3;
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .categories-heading {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .category-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .category-emoji {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .category-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .category-description {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .footer {
+        margin-top: 4rem;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer h2 {
+        font-size: 1.8rem;
+        color: #0056b3;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      .footer-column a,
+      .footer-column p {
+        display: block;
+        color: #555;
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-column a:hover {
+        color: #0056b3;
+      }
+
+      /* Styles for the registration page */
+      .registration-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .registration-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .form-group label {
+        font-weight: 600;
+        color: #333;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        outline: none;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: #0056b3;
+      }
+
+      .submit-btn {
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        border: none;
+        background-color: #0056b3;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        margin-top: 1rem;
+        align-self: center;
+      }
+
+      .submit-btn:hover {
+        background-color: #003d80;
+        transform: scale(1.05);
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .modal h2 {
+        color: #0056b3;
+        margin-bottom: 1rem;
+      }
+
+      .modal p {
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .modal-btn {
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        border: none;
+        background-color: #0056b3;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .modal-btn:hover {
+        background-color: #003d80;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main page content -->
+    <div id="main-page">
+      <div class="logo">
+        <span style="color: #0056b3">{ }</span> Code4Career
+      </div>
+
+      <div class="navbar">
+        <a href="#" onclick="return false;">Home</a>
+        <a href="#categories-section" id="categories-link">Categories</a>
+        <a href="#courses-section" id="courses-link">Courses</a>
+        <a href="#footer">Contact</a>
+      </div>
+
+      <div class="tagline">Professional Coding Education Platform</div>
+      <h1>Accessible Online Courses For All</h1>
+      <p class="description">
+        Advance your career through industry-relevant skills and expert-led
+        programming courses.
+      </p>
+
+      <div class="email-container">
+        <form action="/public/index.html" method="GET" class="email-box">
+          <button
+            type="submit"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfdIGSKGDXX2pzcJ_Fx-bq1ORMbNEquUFGy1vtZReEcAqqBpw/viewform?usp=sharing', '_blank')"
+            class="get-started-button"
+          >
+            Get Started
+          </button>
+        </form>
+      </div>
+
+      <div id="courses-section" class="courses-section-header">
+        <span class="courses-heading">Explore Popular Courses</span>
+      </div>
+
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-emoji">👨‍💻</div>
+          <div class="course-details">
+            <h3 class="course-title">Data Structures and Algorithms</h3>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-emoji">🛢</div>
+          <div class="course-details">
+            <h3 class="course-title">Database Management System</h3>
+          </div>
+        </div>
+      </div>
+
+      <section id="categories-section" class="categories-section">
+        <div class="categories-title">CATEGORIES</div>
+        <h2 class="categories-heading">Explore Career-Boosting Services</h2>
+
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="category-emoji">📄</div>
+            <h3 class="category-title">Resume Review & ATS Optimization</h3>
+            <p class="category-description">
+              Ensure your resume passes ATS filters
+            </p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-emoji">📊</div>
+            <h3 class="category-title">Online Assessment Guidance</h3>
+            <p class="category-description">
+              Ace your coding and aptitude tests with confidence
+            </p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-emoji">💻</div>
+            <h3 class="category-title">Mock Interviews</h3>
+            <p class="category-description">
+              Practice real-time interviews with industry experts
+            </p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-emoji">🎯</div>
+            <h3 class="category-title">Interview Prep</h3>
+            <p class="category-description">
+              Master frameworks & tips to crack interviews
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="why-us" class="why-us-section">
+        <h2>Why Us?</h2>
+        <ul class="why-us-list">
+          <li>
+            <span>👩‍🏫</span>
+            <div>
+              <h3>1:1 Interaction with Students</h3>
+              <p>
+                Get individual attention and clear all your doubts instantly.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>🎯</span>
+            <div>
+              <h3>Personalized Student Learning</h3>
+              <p>Custom learning paths tailored to your strengths and goals.</p>
+            </div>
+          </li>
+          <li>
+            <span>💼</span>
+            <div>
+              <h3>Interview Readiness</h3>
+              <p>
+                Build confidence with mock interviews, resume tips, and
+                placement guidance.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>📚</span>
+            <div>
+              <h3>Strong Foundation on Basics</h3>
+              <p>
+                Master core concepts with clear explanations and real-world
+                examples.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>🛠️</span>
+            <div>
+              <h3>Hands-on Practice & Assessments</h3>
+              <p>
+                Learn by doing through regular coding exercises, quizzes, and
+                projects.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <footer id="footer" class="footer">
+        <h2>Contact Us</h2>
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3>LinkedIn</h3>
+            <a
+              href="https://www.linkedin.com/in/varun-kakathiya-1838ba203/"
+              target="_blank"
+              >Varun Kakathiya</a
+            >
+            <a
+              href="https://www.linkedin.com/in/snigdha-kasireddy-236744207/"
+              target="_blank"
+              >Snigdha Kasireddy</a
+            >
+          </div>
+          <div class="footer-column">
+            <h3>Email</h3>
+            <a href="varunkakathiya1220@gmail.com"
+              >varunkakathiya1220@gmail.com</a
+            >
+            <a href="kasireddy0403@gmail.com">kasireddy0403@gmail.com</a>
+          </div>
+          <div class="footer-column">
+            <h3>Phone</h3>
+            <p>+91 8096150904</p>
+            <p>+91 9290828612</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Registration Page -->
+    <div id="registration-page" style="display: none">
+      <div class="logo">
+        <span style="color: #0056b3">{ }</span> Code4Career
+      </div>
+      <div class="registration-container">
+        <h2>Complete Your Registration</h2>
+        <p>Please fill in your details to get started with Code4Career.</p>
+
+        <form id="registration-form" class="registration-form">
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="fullName" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label for="course-interest">Interested In</label>
+            <select id="course-interest" name="courseInterest" required>
+              <option value="">Select a course</option>
+              <option value="dsa">Data Structures and Algorithms</option>
+              <option value="dbms">Database Management System</option>
+              <option value="fullstack">Full Stack Development</option>
+              <option value="backend">Backend Development</option>
+              <option value="frontend">Frontend Development</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+      <div class="modal-content">
+        <h2>Registration Successful!</h2>
+        <p>
+          Thank you for registering with Code4Career. Your details have been
+          submitted and our team will contact you soon.
+        </p>
+        <p>A confirmation email has been sent to your email address.</p>
+        <button id="modal-close-btn" class="modal-btn">
+          Return to Homepage
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Navigation smooth scrolling
+      document.querySelectorAll('.navbar a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Get Started button functionality
+      document
+        .getElementById("get-started-btn")
+        .addEventListener("click", function () {
+          const email = document.getElementById("email-input").value;
+          if (email) {
+            // Store email in local storage to populate in registration form
+            localStorage.setItem("userEmail", email);
+
+            // Hide main page and show registration page
+            document.getElementById("main-page").style.display = "none";
+            document.getElementById("registration-page").style.display =
+              "block";
+
+            // Populate the email field in registration form
+            document.getElementById("reg-email").value = email;
+          } else {
+            alert("Please enter your email to get started.");
+          }
+        });
+
+      // Form submission
+      document
+        .getElementById("registration-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = {
+            fullName: document.getElementById("full-name").value,
+            email: document.getElementById("reg-email").value,
+            phone: document.getElementById("phone").value,
+            courseInterest: document.getElementById("course-interest").value,
+          };
+
+          // In a real implementation, you would send this data to your server
+          // Here we'll simulate sending emails and showing confirmation
+
+          // Email addresses to receive the form submissions
+          const recipients = [
+            "kasireddy0403@gmail.com",
+            "varunkakathiya1220@gmail.com",
+          ];
+
+          console.log("Form submitted with data:", formData);
+          console.log("Email would be sent to:", recipients.join(", "));
+
+          // Show confirmation modal
+          document.getElementById("confirmation-modal").style.display = "flex";
+        });
+
+      // Modal close button
+      document
+        .getElementById("modal-close-btn")
+        .addEventListener("click", function () {
+          // Hide modal
+          document.getElementById("confirmation-modal").style.display = "none";
+
+          // Return to main page
+          document.getElementById("registration-page").style.display = "none";
+          document.getElementById("main-page").style.display = "block";
+
+          // Clear form data
+          document.getElementById("registration-form").reset();
+          document.getElementById("email-input").value = "";
+          localStorage.removeItem("userEmail");
+        });
+    </script>
+  </body>
+</html>
